@@ -18,4 +18,3 @@ class Info(HeliotropeEntity):
     character: list[str]
     tag: list[str]
     date: datetime
-

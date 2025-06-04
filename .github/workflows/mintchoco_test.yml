@@ -8,10 +8,6 @@ on:
   release:
     types: [ published ]
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   style:
     runs-on: ubuntu-latest
@@ -55,7 +51,7 @@ jobs:
       - name: Check type
         run: poetry run pyright
       - name: Check untyped function
-        run: poetry run mypy ./heliotrope
+        run: poetry run mypy ./phlox
   test:
     runs-on: ubuntu-latest
     steps:
@@ -76,8 +72,11 @@ jobs:
       - name: Check test
         run: poetry run pytest --asyncio-mode=auto
 
-  build-and-push-image:
+  build-and-publish:
     runs-on: ubuntu-latest
+    needs: [ type, test, style ]
+    # only run this job when publishing a release
+    if: github.event_name == 'release' && github.event.action == 'published'
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
