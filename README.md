@@ -1,3 +1,3 @@
-# Mintchoco
+# Phlox
 
 > Heliotrope's Python wrapper
