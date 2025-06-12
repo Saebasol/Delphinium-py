@@ -1,5 +1,5 @@
 class PhloxException(Exception):
-    """Base class for all Phlox exceptions."""
+    """Base class for all Delphinium exceptions."""
 
     pass
 

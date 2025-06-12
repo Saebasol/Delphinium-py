@@ -2,11 +2,11 @@ from datetime import date, datetime
 
 import pytest
 
-from phlox.client import Phlox
+from delphinium.client import Delphinium
 
 
 @pytest.mark.asyncio
-async def test_galleryinfo(client: Phlox):
+async def test_galleryinfo(client: Delphinium):
     galleryinfo = await client.galleryinfo(1)
     assert galleryinfo.tags[0].female
     assert isinstance(galleryinfo.date, datetime)

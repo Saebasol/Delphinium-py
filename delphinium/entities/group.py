@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from phlox.entities.base import HeliotropeEntity
+from delphinium.entities.base import HeliotropeEntity
 
 
 @dataclass

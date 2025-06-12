@@ -1,3 +1,3 @@
-# Phlox
+# Delphinium
 
 > Heliotrope's Python wrapper

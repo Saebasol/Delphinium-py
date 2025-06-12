@@ -1,11 +1,11 @@
 import pytest
 
-from phlox.client import Phlox
-from phlox.entities.info import Info
+from delphinium.client import Delphinium
+from delphinium.entities.info import Info
 
 
 @pytest.mark.asyncio
-async def test_search(client: Phlox):
+async def test_search(client: Delphinium):
     infos, count = await client.search(["sekigahara", "artist:tsukako"])
     assert isinstance(infos, list)
     assert all(isinstance(info, Info) for info in infos)

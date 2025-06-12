@@ -1,8 +1,8 @@
-from phlox.entities import *
-from phlox.http import PhloxHTTP
+from delphinium.entities import *
+from delphinium.http import PhloxHTTP
 
 
-class Phlox(PhloxHTTP):
+class Delphinium(PhloxHTTP):
     async def galleryinfo(self, index: int) -> Galleryinfo:
         response = await self.get_galleryinfo(index)
         return Galleryinfo.from_dict(response)

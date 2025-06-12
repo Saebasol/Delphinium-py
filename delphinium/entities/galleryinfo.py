@@ -4,14 +4,14 @@ from dataclasses import dataclass
 from datetime import date, datetime
 from typing import Optional
 
-from phlox.entities.artist import Artist
-from phlox.entities.base import HeliotropeEntity
-from phlox.entities.character import Character
-from phlox.entities.file import File
-from phlox.entities.group import Group
-from phlox.entities.language import Language
-from phlox.entities.parody import Parody
-from phlox.entities.tag import Tag
+from delphinium.entities.artist import Artist
+from delphinium.entities.base import HeliotropeEntity
+from delphinium.entities.character import Character
+from delphinium.entities.file import File
+from delphinium.entities.group import Group
+from delphinium.entities.language import Language
+from delphinium.entities.parody import Parody
+from delphinium.entities.tag import Tag
 
 
 @dataclass

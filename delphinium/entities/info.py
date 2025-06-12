@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 
-from phlox.entities.base import HeliotropeEntity
+from delphinium.entities.base import HeliotropeEntity
 
 
 @dataclass
