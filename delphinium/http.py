@@ -2,8 +2,10 @@ from platform import python_version
 from types import TracebackType
 from typing import Any, Literal, Optional
 
-from aiohttp import ClientSession, __version__
-from delphinium import __version__ as Phlox_version
+from aiohttp import ClientSession
+from aiohttp import __version__ as aiohttp_version
+
+from delphinium import __version__ as delphinium_version
 from delphinium.error import PhloxHTTPError
 from delphinium.types import (
     HeliotropeFilesJSON,
@@ -15,7 +17,7 @@ from delphinium.types import (
 
 
 class PhloxHTTP:
-    UA = f"Delphinium (https://github.com/Saebasol/Delphinium {Phlox_version}) Python/{python_version()} aiohttp/{__version__}"
+    UA = f"Delphinium (https://github.com/Saebasol/Delphinium {delphinium_version}) Python/{python_version()} aiohttp/{aiohttp_version}"
 
     def __init__(
         self, base_url: str, client_session: Optional[ClientSession] = None
