@@ -10,11 +10,11 @@ class Info(HeliotropeEntity):
     id: int
     title: str
     thumbnail: str
-    artist: list[str]
-    group: list[str]
+    artists: list[str]
+    groups: list[str]
     type: str
     language: Optional[str]
     series: list[str]
-    character: list[str]
-    tag: list[str]
+    characters: list[str]
+    tags: list[str]
     date: datetime
