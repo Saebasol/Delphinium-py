@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "delphinium"
-version = "1.0.0"
+version = "1.1.0"
 description = "Heliotrope wrapper (Python)"
 authors = ["Ryu Juheon <saidbysolo@gmail.com>"]
 license = "MIT License"
