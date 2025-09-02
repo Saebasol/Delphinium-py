@@ -1,8 +1,9 @@
 from delphinium.entities import *
-from delphinium.http import PhloxHTTP
+from delphinium.entities.tags import Tags
+from delphinium.http import DelphiniumHTTP
 
 
-class Delphinium(PhloxHTTP):
+class Delphinium(DelphiniumHTTP):
     async def galleryinfo(self, index: int) -> Galleryinfo:
         response = await self.get_galleryinfo(index)
         return Galleryinfo.from_dict(response)
@@ -25,6 +26,10 @@ class Delphinium(PhloxHTTP):
     async def info(self, index: int) -> Info:
         response = await self.get_info(index)
         return Info.from_dict(response)
+
+    async def tags(self) -> Tags:
+        response = await self.get_tags()
+        return Tags.from_dict(response)
 
     async def list(self, index: int) -> tuple[list[Info], int]:
         resp = await self.get_list(index)

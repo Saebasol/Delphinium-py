@@ -78,13 +78,13 @@ class HeliotropeInfoJSON(BaseHeliotropeJSON):
     id: int
     title: str
     thumbnail: str
-    artist: list[str]
-    group: list[str]
+    artists: list[str]
+    groups: list[str]
     type: str
     language: Optional[str]
     series: list[str]
-    character: list[str]
-    tag: list[str]
+    characters: list[str]
+    tags: list[str]
     date: str
 
 
@@ -100,3 +100,15 @@ class HeliotropeListJSON(BaseHeliotropeJSON):
 class HeliotropeSearchJSON(BaseHeliotropeJSON):
     result: list[HeliotropeInfoJSON]
     count: int
+
+
+class HeliotropeTagsJSON(BaseHeliotropeJSON):
+    artists: list[str]
+    groups: list[str]
+    series: list[str]
+    characters: list[str]
+    tag: list[str]
+    male: list[str]
+    female: list[str]
+    type: list[str]
+    language: list[str]

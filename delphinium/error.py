@@ -1,8 +1,8 @@
-class PhloxException(Exception):
+class DelphiniumException(Exception):
     """Base class for all Delphinium exceptions."""
 
     pass
 
 
-class PhloxHTTPError(PhloxException):
+class DelphiniumHTTPError(DelphiniumException):
     """Exception raised for HTTP errors."""

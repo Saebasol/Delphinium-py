@@ -6,17 +6,18 @@ from aiohttp import ClientSession
 from aiohttp import __version__ as aiohttp_version
 
 from delphinium import __version__ as delphinium_version
-from delphinium.error import PhloxHTTPError
+from delphinium.error import DelphiniumHTTPError
 from delphinium.types import (
     HeliotropeFilesJSON,
     HeliotropeGalleryinfoJSON,
     HeliotropeInfoJSON,
     HeliotropeListJSON,
     HeliotropeSearchJSON,
+    HeliotropeTagsJSON,
 )
 
 
-class PhloxHTTP:
+class DelphiniumHTTP:
     UA = f"Delphinium (https://github.com/Saebasol/Delphinium {delphinium_version}) Python/{python_version()} aiohttp/{aiohttp_version}"
 
     def __init__(
@@ -42,7 +43,7 @@ class PhloxHTTP:
             body = await resp.json()
 
             if resp.status != 200:
-                raise PhloxHTTPError(body["message"])
+                raise DelphiniumHTTPError(body["message"])
 
             return body
 
@@ -61,6 +62,9 @@ class PhloxHTTP:
     async def get_random(self, query: list[str]) -> HeliotropeInfoJSON:
         return await self.request("POST", "/api/hitomi/random", {"query": query})
 
+    async def get_tags(self) -> HeliotropeTagsJSON:
+        return await self.request("GET", "/api/hitomi/tags")
+
     async def post_search(self, query: list[str], offset: int) -> HeliotropeSearchJSON:
         return await self.request(
             "POST",
@@ -71,7 +75,7 @@ class PhloxHTTP:
             },
         )
 
-    async def __aenter__(self) -> "PhloxHTTP":
+    async def __aenter__(self) -> "DelphiniumHTTP":
         return self
 
     async def __aexit__(
