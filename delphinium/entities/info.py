@@ -9,7 +9,6 @@ from delphinium.entities.base import HeliotropeEntity
 class Info(HeliotropeEntity):
     id: int
     title: str
-    thumbnail: str
     artists: list[str]
     groups: list[str]
     type: str
