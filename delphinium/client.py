@@ -1,5 +1,8 @@
+from typing import Literal
+
 from delphinium.entities import *
 from delphinium.entities.tags import Tags
+from delphinium.entities.thumbnail import Thumbnail
 from delphinium.http import DelphiniumHTTP
 
 
@@ -8,9 +11,9 @@ class Delphinium(DelphiniumHTTP):
         response = await self.get_galleryinfo(index)
         return Galleryinfo.from_dict(response)
 
-    async def image(self, index: int) -> list[str]:
+    async def image(self, index: int) -> list[ResolvedFile]:
         resp = await self.get_image(index)
-        return resp["files"]
+        return [ResolvedFile.from_dict(file) for file in resp["files"]]
 
     async def search(self, query: list[str], offset: int = 1) -> tuple[list[Info], int]:
         resp = await self.post_search(query, offset)
@@ -35,3 +38,12 @@ class Delphinium(DelphiniumHTTP):
         resp = await self.get_list(index)
         infos = [Info.from_dict(info) for info in resp["list"]]
         return infos, resp["total"]
+
+    async def thumbnail(
+        self,
+        id: int,
+        size: Literal["smallsmall", "small", "smallbig", "big"],
+        single: bool = True,
+    ) -> Thumbnail:
+        response = await self.get_thumbnail(id, size, single)
+        return Thumbnail.from_dict(response)

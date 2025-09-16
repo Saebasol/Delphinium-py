@@ -14,6 +14,7 @@ from delphinium.types import (
     HeliotropeListJSON,
     HeliotropeSearchJSON,
     HeliotropeTagsJSON,
+    HeliotropeThumbnailJSON,
 )
 
 
@@ -65,13 +66,23 @@ class DelphiniumHTTP:
     async def get_tags(self) -> HeliotropeTagsJSON:
         return await self.request("GET", "/api/hitomi/tags")
 
+    async def get_thumbnail(
+        self,
+        id: int,
+        size: Literal["smallsmall", "small", "smallbig", "big"],
+        single: bool,
+    ) -> HeliotropeThumbnailJSON:
+        single_str = "true" if single else "false"
+        return await self.request(
+            "GET", f"/api/hitomi/thumbnail/{id}?size={size}&single={single_str}"
+        )
+
     async def post_search(self, query: list[str], offset: int) -> HeliotropeSearchJSON:
         return await self.request(
             "POST",
-            "/api/hitomi/search",
+            f"/api/hitomi/search?offset={offset}",
             {
                 "query": query,
-                "offset": offset,
             },
         )
 
