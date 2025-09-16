@@ -2,7 +2,6 @@ from typing import Literal
 
 from delphinium.entities import *
 from delphinium.entities.tags import Tags
-from delphinium.entities.thumbnail import Thumbnail
 from delphinium.http import DelphiniumHTTP
 
 
@@ -34,16 +33,16 @@ class Delphinium(DelphiniumHTTP):
         response = await self.get_tags()
         return Tags.from_dict(response)
 
-    async def list(self, index: int) -> tuple[list[Info], int]:
-        resp = await self.get_list(index)
-        infos = [Info.from_dict(info) for info in resp["list"]]
-        return infos, resp["total"]
-
     async def thumbnail(
         self,
         id: int,
         size: Literal["smallsmall", "small", "smallbig", "big"],
         single: bool = True,
-    ) -> Thumbnail:
+    ) -> list[str]:
         response = await self.get_thumbnail(id, size, single)
-        return Thumbnail.from_dict(response)
+        return response["url"]
+
+    async def list(self, index: int) -> tuple[list[Info], int]:
+        resp = await self.get_list(index)
+        infos = [Info.from_dict(info) for info in resp["list"]]
+        return infos, resp["total"]
