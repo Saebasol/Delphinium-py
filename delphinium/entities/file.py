@@ -13,11 +13,3 @@ class File(HeliotropeEntity):
     hasjxl: bool = field(default=False)
     haswebp: bool = field(default=False)
     single: bool = field(default=False)
-
-
-@dataclass
-class ResolvedFile(HeliotropeEntity):
-    name: str
-    width: int
-    height: int
-    url: str
