@@ -15,13 +15,6 @@ class HeliotropeFileJSON(BaseHeliotropeJSON):
     single: bool
 
 
-class HeliotropeResolvedFileJSON(BaseHeliotropeJSON):
-    name: str
-    width: int
-    height: int
-    url: str
-
-
 class HeliotropeTagJSON(BaseHeliotropeJSON):
     tag: str
     url: str
@@ -95,8 +88,9 @@ class HeliotropeInfoJSON(BaseHeliotropeJSON):
     date: str
 
 
-class HeliotropeFilesJSON(BaseHeliotropeJSON):
-    files: list[HeliotropeResolvedFileJSON]
+class HeliotropeResolvedImageJSON(BaseHeliotropeJSON):
+    url: str
+    file: HeliotropeFileJSON
 
 
 class HeliotropeListJSON(BaseHeliotropeJSON):
@@ -119,7 +113,3 @@ class HeliotropeTagsJSON(BaseHeliotropeJSON):
     female: list[str]
     type: list[str]
     language: list[str]
-
-
-class HeliotropeThumbnailJSON(BaseHeliotropeJSON):
-    url: list[str]

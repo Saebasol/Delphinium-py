@@ -8,13 +8,12 @@ from aiohttp import __version__ as aiohttp_version
 from delphinium import __version__ as delphinium_version
 from delphinium.error import DelphiniumHTTPError
 from delphinium.types import (
-    HeliotropeFilesJSON,
     HeliotropeGalleryinfoJSON,
     HeliotropeInfoJSON,
     HeliotropeListJSON,
+    HeliotropeResolvedImageJSON,
     HeliotropeSearchJSON,
     HeliotropeTagsJSON,
-    HeliotropeThumbnailJSON,
 )
 
 
@@ -51,7 +50,7 @@ class DelphiniumHTTP:
     async def get_galleryinfo(self, index: int) -> HeliotropeGalleryinfoJSON:
         return await self.request("GET", f"/api/hitomi/galleryinfo/{index}")
 
-    async def get_image(self, index: int) -> HeliotropeFilesJSON:
+    async def get_image(self, index: int) -> list[HeliotropeResolvedImageJSON]:
         return await self.request("GET", f"/api/hitomi/image/{index}")
 
     async def get_info(self, index: int) -> HeliotropeInfoJSON:
@@ -71,7 +70,7 @@ class DelphiniumHTTP:
         id: int,
         size: Literal["smallsmall", "small", "smallbig", "big"],
         single: bool,
-    ) -> HeliotropeThumbnailJSON:
+    ) -> list[HeliotropeResolvedImageJSON]:
         single_str = "true" if single else "false"
         return await self.request(
             "GET", f"/api/hitomi/thumbnail/{id}?size={size}&single={single_str}"
