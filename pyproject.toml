@@ -16,7 +16,7 @@ include = ["delphinium"]
 typeCheckingMode = "strict"
 
 [tool.poetry.group.style.dependencies]
-black = "^24.10.0"
+black = ">=24.10,<26.0"
 isort = ">=5.10.1,<7.0.0"
 
 [tool.poetry.group.test.dependencies]
