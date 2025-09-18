@@ -22,7 +22,7 @@ isort = ">=5.10.1,<7.0.0"
 [tool.poetry.group.test.dependencies]
 pytest = ">=7.1.3,<9.0.0"
 pytest-cov = ">=6.1.1,<8.0.0"
-pytest-asyncio = "^0.19.0"
+pytest-asyncio = ">=0.19,<1.3"
 
 [tool.poetry.group.type.dependencies]
 pyright = "^1.1.401"
