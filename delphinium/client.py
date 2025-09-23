@@ -46,4 +46,4 @@ class Delphinium(DelphiniumHTTP):
     async def list(self, index: int) -> tuple[list[Info], int]:
         resp = await self.get_list(index)
         infos = [Info.from_dict(info) for info in resp["list"]]
-        return infos, resp["total"]
+        return infos, resp["count"]
