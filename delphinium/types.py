@@ -95,7 +95,7 @@ class HeliotropeResolvedImageJSON(BaseHeliotropeJSON):
 
 class HeliotropeListJSON(BaseHeliotropeJSON):
     list: list[HeliotropeInfoJSON]
-    total: int
+    count: int
 
 
 class HeliotropeSearchJSON(BaseHeliotropeJSON):
