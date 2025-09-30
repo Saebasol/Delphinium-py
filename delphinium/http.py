@@ -6,13 +6,14 @@ from aiohttp import ClientSession
 from aiohttp import __version__ as aiohttp_version
 
 from delphinium import __version__ as delphinium_version
+from delphinium.dtos.thumbnail import Size
 from delphinium.error import DelphiniumHTTPError
 from delphinium.types import (
     HeliotropeGalleryinfoJSON,
     HeliotropeInfoJSON,
-    HeliotropeListJSON,
+    HeliotropeListResultDTOJSON,
     HeliotropeResolvedImageJSON,
-    HeliotropeSearchJSON,
+    HeliotropeSearchResultDTOJSON,
     HeliotropeTagsJSON,
 )
 
@@ -47,20 +48,17 @@ class DelphiniumHTTP:
 
             return body
 
-    async def get_galleryinfo(self, index: int) -> HeliotropeGalleryinfoJSON:
-        return await self.request("GET", f"/api/hitomi/galleryinfo/{index}")
+    async def get_galleryinfo(self, id: int) -> HeliotropeGalleryinfoJSON:
+        return await self.request("GET", f"/api/hitomi/galleryinfo/{id}")
 
-    async def get_image(self, index: int) -> list[HeliotropeResolvedImageJSON]:
-        return await self.request("GET", f"/api/hitomi/image/{index}")
+    async def get_image(self, id: int) -> list[HeliotropeResolvedImageJSON]:
+        return await self.request("GET", f"/api/hitomi/image/{id}")
 
-    async def get_info(self, index: int) -> HeliotropeInfoJSON:
-        return await self.request("GET", f"/api/hitomi/info/{index}")
+    async def get_info(self, id: int) -> HeliotropeInfoJSON:
+        return await self.request("GET", f"/api/hitomi/info/{id}")
 
-    async def get_list(self, index: int) -> HeliotropeListJSON:
+    async def get_list(self, index: int) -> HeliotropeListResultDTOJSON:
         return await self.request("GET", f"/api/hitomi/list/{index}")
-
-    async def get_random(self, query: list[str]) -> HeliotropeInfoJSON:
-        return await self.request("POST", "/api/hitomi/random", {"query": query})
 
     async def get_tags(self) -> HeliotropeTagsJSON:
         return await self.request("GET", "/api/hitomi/tags")
@@ -68,15 +66,20 @@ class DelphiniumHTTP:
     async def get_thumbnail(
         self,
         id: int,
-        size: Literal["smallsmall", "small", "smallbig", "big"],
+        size: Size,
         single: bool,
     ) -> list[HeliotropeResolvedImageJSON]:
         single_str = "true" if single else "false"
         return await self.request(
-            "GET", f"/api/hitomi/thumbnail/{id}?size={size}&single={single_str}"
+            "GET", f"/api/hitomi/thumbnail/{id}?size={size.value}&single={single_str}"
         )
 
-    async def post_search(self, query: list[str], offset: int) -> HeliotropeSearchJSON:
+    async def post_random(self, query: list[str]) -> HeliotropeInfoJSON:
+        return await self.request("POST", "/api/hitomi/random", {"query": query})
+
+    async def post_search(
+        self, query: list[str], offset: int
+    ) -> HeliotropeSearchResultDTOJSON:
         return await self.request(
             "POST",
             f"/api/hitomi/search?offset={offset}",
