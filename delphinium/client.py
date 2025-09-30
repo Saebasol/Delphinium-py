@@ -38,7 +38,7 @@ class Delphinium:
         return Tags.from_dict(data)
 
     async def get_thumbnail(
-        self, id: int, size: Size = Size.SMALL, single: bool = False
+        self, id: int, size: Size = Size.SMALL, single: bool = True
     ) -> list[ResolvedImage]:
         data = await self.http.get_thumbnail(id, size, single)
         return [ResolvedImage.from_dict(item) for item in data]
