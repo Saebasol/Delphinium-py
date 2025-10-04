@@ -6,5 +6,5 @@ from delphinium.entities.info import Info
 
 @dataclass
 class SearchResultDTO(HeliotropeEntity):
-    result: list[Info]
+    results: list[Info]
     count: int
