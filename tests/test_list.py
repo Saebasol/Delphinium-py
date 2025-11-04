@@ -2,7 +2,7 @@ import pytest
 
 from delphinium.client import Delphinium
 from delphinium.dtos.list import ListResultDTO
-from delphinium.entities.info import Info
+from yggdrasil.domain.entities.info import Info
 
 
 @pytest.mark.asyncio

@@ -1,7 +1,7 @@
 import pytest
+from yggdrasil.domain.entities.file import File
 
 from delphinium.client import Delphinium
-from delphinium.entities.file import File
 
 
 @pytest.mark.asyncio

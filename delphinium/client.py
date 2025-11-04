@@ -1,13 +1,14 @@
 from typing import Any, Optional
 
 from aiohttp import ClientSession
+from yggdrasil.application.dtos.thumbnail import Size
+from yggdrasil.domain.entities.all_tags import AllTags
+from yggdrasil.domain.entities.galleryinfo import Galleryinfo
+from yggdrasil.domain.entities.info import Info
+from yggdrasil.domain.entities.resolved_image import ResolvedImage
 
 from delphinium.dtos.list import ListResultDTO
 from delphinium.dtos.search import SearchResultDTO
-from delphinium.dtos.thumbnail import Size
-from delphinium.entities import *
-from delphinium.entities.resolved_image import ResolvedImage
-from delphinium.entities.tags import Tags
 from delphinium.http import DelphiniumHTTP
 
 
@@ -33,9 +34,9 @@ class Delphinium:
         data = await self.http.get_list(index)
         return ListResultDTO.from_dict(data)
 
-    async def get_tags(self) -> Tags:
+    async def get_tags(self) -> AllTags:
         data = await self.http.get_tags()
-        return Tags.from_dict(data)
+        return AllTags.from_dict(data)
 
     async def get_thumbnail(
         self, id: int, size: Size = Size.SMALL, single: bool = True

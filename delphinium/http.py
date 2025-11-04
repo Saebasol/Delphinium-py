@@ -4,9 +4,9 @@ from typing import Any, Literal, Optional
 
 from aiohttp import ClientSession
 from aiohttp import __version__ as aiohttp_version
+from yggdrasil.application.dtos.thumbnail import Size
 
 from delphinium import __version__ as delphinium_version
-from delphinium.dtos.thumbnail import Size
 from delphinium.error import DelphiniumHTTPError
 from delphinium.types import (
     HeliotropeGalleryinfoJSON,
