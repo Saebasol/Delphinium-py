@@ -3,8 +3,8 @@ from typing import Any, Optional
 from aiohttp import ClientSession
 from yggdrasil.application.dtos.thumbnail import Size
 from yggdrasil.domain.entities.all_tags import AllTags
-from yggdrasil.domain.entities.galleryinfo import Galleryinfo
 from yggdrasil.domain.entities.info import Info
+from yggdrasil.domain.entities.raw_galleryinfo import RawGalleryinfo as Galleryinfo
 from yggdrasil.domain.entities.resolved_image import ResolvedImage
 
 from delphinium.dtos.list import ListResultDTO
