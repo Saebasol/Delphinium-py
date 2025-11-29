@@ -10,6 +10,7 @@ package-mode = true
 [tool.poetry.dependencies]
 python = "^3.13"
 aiohttp = "^3.11.18"
+yggdrasil = {git = "https://github.com/Saebasol/Yggdrasil.git", rev = "2.0.0"}
 
 [tool.pyright]
 include = ["delphinium"]

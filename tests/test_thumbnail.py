@@ -1,8 +1,8 @@
 import pytest
+from yggdrasil.application.dtos.thumbnail import Size
+from yggdrasil.domain.entities.file import File
 
 from delphinium.client import Delphinium
-from delphinium.dtos.thumbnail import Size
-from delphinium.entities.file import File
 
 
 @pytest.mark.asyncio

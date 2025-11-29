@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
-from delphinium.entities.base import HeliotropeEntity
-from delphinium.entities.info import Info
+from yggdrasil.application.dtos.search import (
+    SearchResultDTO as YggdrasilSearchResultDTO,
+)
+from yggdrasil.domain.deserializer import Deserializer
 
 
 @dataclass
-class SearchResultDTO(HeliotropeEntity):
-    results: list[Info]
-    count: int
+class SearchResultDTO(YggdrasilSearchResultDTO, Deserializer): ...

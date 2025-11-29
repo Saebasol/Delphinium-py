@@ -1,10 +1,8 @@
 from dataclasses import dataclass
 
-from delphinium.entities.base import HeliotropeEntity
-from delphinium.entities.info import Info
+from yggdrasil.application.dtos.list import ListResultDTO as YggdrasilListResultDTO
+from yggdrasil.domain.deserializer import Deserializer
 
 
 @dataclass
-class ListResultDTO(HeliotropeEntity):
-    items: list[Info]
-    count: int
+class ListResultDTO(YggdrasilListResultDTO, Deserializer): ...
